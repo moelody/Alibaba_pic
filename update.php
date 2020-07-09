@@ -1,10 +1,4 @@
 <?php
-/**
- * 阿里图床上传
- * @author: 阿珏 (QQ群：712473912)
- * @link: http://www.52ecy.cn
- * @version: 1.1
- */
 
 $file = $_FILES['file'];
 if (is_uploaded_file($file['tmp_name'])){
@@ -33,8 +27,6 @@ if (is_uploaded_file($file['tmp_name'])){
 	msg(['code'=> 1,'msg'=> '上传数据有误']);
 }
 
-
-
 function upload($url,$file) {
 	return get_url($url,[
 		'scene' => 'aeMessageCenterV2ImageRule',
@@ -42,7 +34,6 @@ function upload($url,$file) {
 		'file' => new \CURLFile(realpath($file))
 	]);
 }
-
 
 function get_url($url,$post){
 	$ch = curl_init();
