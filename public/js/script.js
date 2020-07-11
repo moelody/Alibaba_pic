@@ -74,7 +74,7 @@ const itemMarkup = (file, url, x, y) => {
   const id = Math.random().toString(36).substr(2, 9);
   item.classList.add("item");
   item.setAttribute("id", id);
-  item.innerHTML = `<div class="item-img"><img src="${url}"/></div><div class="item-details"><div class="item-name">${file.name}</div><div class="item-size">SIZE:${formatBytes(file.size)}</div></div><button class="item-delete"data-id="${id}"></button><button class="item-delete item-url"id="${id}iAjue"onclick="copyToClipboard(this)"></button>`;
+  item.innerHTML = `<div class="item-img"><img src="${url}"/></div><div class="item-details"><div class="item-name">${file.name}</div><div class="item-size">SIZE:${formatBytes(file.size)}</div></div><button class="item-delete"data-id="${id}"></button><button title="复制" class="item-delete item-url"id="${id}iAjue"onclick="copyToClipboard(this)"></button>`;
   list.append(item);
   const itemDeleteBtn = item.querySelector(".item-delete");
   itemDeleteBtn.addEventListener("click", e => {

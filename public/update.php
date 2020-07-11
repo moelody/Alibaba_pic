@@ -8,16 +8,18 @@ if (is_uploaded_file($file['tmp_name'])){
 	if(!in_array($ext_suffix, $allow_suffix)){
 		msg(['code'=> 1,'msg'=> '上传格式不支持']);
 	}
-	$new_filename = time().rand(100,1000).'.'.$ext_suffix;
+	// $new_filename = time().rand(100,1000).'.'.$ext_suffix;
+	$new_filename = time().rand(100,1000).'.jpg';
 	if (move_uploaded_file($file['tmp_name'], $new_filename)){
 		$data = upload('https://kfupload.alibaba.com/mupload',$new_filename);
 		$pattern = '/"url":"(.*?)"/';
-		preg_match($pattern, $data, $match);
+    preg_match($pattern, $data, $match);
 		@unlink($new_filename);
 		if($match && $match[1]!=''){
 			msg(['code'=> 0,'msg'=> $match[1]]);
 		}else{
-			msg(['code'=> 1,'msg'=> '上传失败']);
+			// msg(['code'=> 1,'msg'=> '上传失败']);
+			msg(['code'=> 1,'msg'=> $data]);
 		}
 	}else{
 		msg(['code'=> 1,'msg'=> '上传数据有误']);
